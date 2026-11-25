@@ -27,6 +27,10 @@ def main() -> None:
         written = f.read()
     assert written == LINE, "entry.txt differs from LINE"
     assert 1 <= len(written) <= 200 and written.strip(), "gate failed"
+    # The brief asks for one sentence: the line must end in a full stop and
+    # carry no earlier sentence terminator outside its quoted advice.
+    assert written.endswith(".'"), "line must end as one sentence"
+    assert written.count(".") == 1, "line must be a single sentence"
 
 
 if __name__ == "__main__":
